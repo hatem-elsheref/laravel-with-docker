@@ -32,8 +32,11 @@ in the path of docker compose file
 $ sudo docker-compose build --no-cache
 $ sudo docker-compose up
 $ open the application dir in your ide
-$ composer install
+$ remove composer.lock file and run > sudo composer update
 $ change the database connection connfigurations in .env file to
+$ change the permissions of storage dir
+$ generate new key > php artisan key:generate
+$ run migrations file > php artisan migrate:fresh --seed
 
 > DB_CONNECTION=mysql
 > DB_HOST=mysql_server
