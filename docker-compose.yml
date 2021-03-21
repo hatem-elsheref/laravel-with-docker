@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mysql-server:
+    image: mysql:latest
+    container_name: mysql_server
+    volumes:
+      - "./MYSQL/data/db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: webserver
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: hatem
+      MYSQL_PASSWORD: webserver
+    restart: on-failure
+    ports:
+    - "3307:3306"
+  php-server:
+    build: ./PHP
+    expose:
+      - "9000"
+    container_name: php_server
+    volumes:
+      - "./PHP/application:/var/www/html"
+  nginx-server:
+    build: ./NGINX
+    ports:
+      - "8080:80"
+    container_name: nginx_server
+    volumes:
+      - "./PHP/application:/var/www/html"
+    depends_on:
+      - php-server
+
