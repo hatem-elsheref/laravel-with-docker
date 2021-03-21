@@ -36,7 +36,7 @@ $ remove composer.lock file and run > sudo composer update
 $ change the database connection connfigurations in .env file to
 $ change the permissions of storage dir
 $ generate new key > php artisan key:generate
-$ run migrations file > php artisan migrate:fresh --seed
+$ run migrations file > php artisan migrate:fresh --seed > in the php_server container not in host
 
 > DB_CONNECTION=mysql
 > DB_HOST=mysql_server
